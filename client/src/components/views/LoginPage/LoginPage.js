@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch} from 'react-redux';
 import { loginUser } from '../../../action/user_action';
+import { withRouter } from 'react-router-dom'; 
 
 
 function LoginPage(props){
@@ -46,13 +47,13 @@ function LoginPage(props){
 
             <form style={{
                 display: 'flex', flexDirection: 'column'
-            }}>
+            }} onSubmit={onSubmitHandler}>
                 <label>Email</label>
                 <input type="email" value={Email} onChange={onEmailHandler} />
                 <label>Password</label>
                 <input type="password" value={Password} onChange={onPasswordHandler} />
                 <br />
-                <button onSubmit={onSubmitHandler}>
+                <button type='submit'>
                     Login
                 </button>
             </form>
@@ -63,4 +64,4 @@ function LoginPage(props){
     )
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);
